@@ -18,7 +18,7 @@
             <div id="imageButton" style="width: 100%; text-align:center; padding:10px;">
                 <img id="imagePreview" src="{{ (empty($brand->logo) ? asset('storage/brand_logo/no_image.png') : asset($brand->logo)) }}"
                     alt="Vista previa de la imagen" style="width: 100%;height:180px;cursor: pointer;" >
-                <p style="font-size:12px">Haga clic para seleccionar una imagen</p>
+                <p style="font-size:12px">Haga click para seleccionar una imagen</p>
 
             </div>
 
