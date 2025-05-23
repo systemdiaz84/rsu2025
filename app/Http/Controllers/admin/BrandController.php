@@ -143,6 +143,7 @@ class BrandController extends Controller
                     'description' => $request->description
                 ]);
             }
+            return response()->json(['message' => 'Marca actualizada correctamente'], 200);
         } catch (\Throwable $th) {
             return response()->json(['message' => 'Error en la actualiación: ' . $th->getMessage()], 400);
         }

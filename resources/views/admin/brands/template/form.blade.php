@@ -16,12 +16,11 @@
     <div class="col-4">
         <div class="form-group">
             <div id="imageButton" style="width: 100%; text-align:center; padding:10px;">
-                <img id="imagePreview" src="{{ (empty($brand->logo) ? asset('storage/brand_logo/no_image.png') : asset($brand->logo)) }}"
-                    alt="Vista previa de la imagen" style="width: 100%;height:180px;cursor: pointer;" >
+                <img id="imagePreview"
+                    src="{{ empty($brand->logo) ? asset('storage/brand_logo/no_image.png') : asset($brand->logo) }}"
+                    alt="Vista previa de la imagen" style="width: 100%;height:180px;cursor: pointer;">
                 <p style="font-size:12px">Haga click para seleccionar una imagen</p>
-
             </div>
-
         </div>
         <div class="form-group">
             {!! Form::file('logo', [
@@ -30,7 +29,6 @@
                 'id' => 'imageInput',
             ]) !!}
             <!--<button type="button" class="btn btn-primary" id="_imageButton"><i class="fas fa-image"></i> Imagen</button>-->
-
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Marcas')
+@section('title', 'Modelos')
 
 @section('content')
     <div class="p-2"></div>
@@ -8,15 +8,15 @@
     <div class="card">
         <div class="card-header">
             <button class="btn btn-secondary float-right" id="btnNuevo"><i class="fas fa-plus"></i></button>
-            <h3>Marcas</h3>
+            <h3>Modelos</h3>
         </div>
 
         <div class="card-body">
             <table class="display" id="table">
                 <thead>
                     <tr>
-                        <th>Logo</th>
-                        <th>Nombre</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
                         <th>Descripción</th>
                         <th>Creación</th>
                         <th>Actualización</th>
@@ -33,7 +33,7 @@
 
     <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -58,19 +58,15 @@
 @section('js')
     <script>
         $(document).ready(function() {
-
             $('#table').DataTable({
                 responsive: true,
                 autoWidth: false,
-                "ajax": "{{ route('admin.brands.index') }}",
+                "ajax": "{{ route('admin.models.index') }}",
                 "columns": [{
-                        "data": "logo",
-                        "orderable": false,
-                        "searchable": false,
-                        "width": "5%",
+                        "data": "brandname",
                     },
                     {
-                        "data": "name",
+                        "data": "modelname",
                     },
                     {
                         "data": "description",
@@ -96,17 +92,17 @@
                 ],
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
-                },
+                }
             });
         });
 
 
         $('#btnNuevo').click(function() {
             $.ajax({
-                url: "{{ route('admin.brands.create') }}",
+                url: "{{ route('admin.models.create') }}",
                 type: "GET",
                 success: function(response) {
-                    $("#exampleModalLabel").html("Nueva marca");
+                    $("#exampleModalLabel").html("Nueva modelo");
                     $("#formModal .modal-body").html(response);
                     $('#formModal').modal('show');
 
@@ -142,7 +138,7 @@
         $(document).on('click', '.btnEditar', function() {
             var id = $(this).attr("id");
             $.ajax({
-                url: "{{ route('admin.brands.edit', 'id') }}".replace('id', id),
+                url: "{{ route('admin.models.edit', 'id') }}".replace('id', id),
                 type: "GET",
                 success: function(response) {
                     $("#exampleModalLabel").html("Modificar marca");
